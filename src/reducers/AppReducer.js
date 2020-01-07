@@ -3,7 +3,9 @@ const INITIAL_STATE = {
     msgErroCadastroUsuario: '',
     cadastroResultadoUsuario: false,
     categorias:'',
-    mensagem: ''
+    mensagem: '',
+    carrinho:[], 
+    qtd_carrinho: 0,
 };
 
 import {
@@ -12,7 +14,10 @@ import {
     ADICIONA_CONTATO_SUCESSO,
     MODIFICA_MENSAGEM,
     ENVIA_MENSAGEM_SUCESSO,
-    CATEGORIA_CARREGADA_OK
+    CATEGORIA_CARREGADA_OK,
+    ADICIONA_PRODUTO,
+    REMOVE_PRODUTO,
+    LIMPA_CARRINHO
 } from '../actions/ActionTypes';
 
 export default (state = INITIAL_STATE, action) => {
@@ -30,6 +35,14 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, mensagem: action.payload };   
         case ENVIA_MENSAGEM_SUCESSO:
             return { ...state, mensagem: '' };
+        case ADICIONA_PRODUTO:
+            
+            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length  };   
+        case REMOVE_PRODUTO:
+                
+            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };   
+        case LIMPA_CARRINHO:
+            return { ...state, carrinho: '' };   
         default:
             return state;
     }

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-class EmptyCart extends React.Component {
+class EmptyCart extends Component {
   render() {
+    
     return (
       <View style={styles.container}>
         <View>
@@ -18,9 +19,9 @@ class EmptyCart extends React.Component {
               opacity: 0.55
             }}
           >
-            Cart is empty!
+            O carrinho está vazio!
           </Text>
-          <EmptyCart />
+         
         </View>
       </View>
     );

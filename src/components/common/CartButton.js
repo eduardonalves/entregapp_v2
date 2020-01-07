@@ -1,10 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import { Image, Text, View, TouchableOpacity } from "react-native";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-class CartButton extends React.Component {
+import { addToCart } from '../../actions/AppActions';
+
+class CartButton extends Component {
   constructor(props) {
     super(props);
     this.handleNavigate = this.handleNavigate.bind(this);
+    
   }
 
   handleNavigate = () => {
@@ -12,6 +17,8 @@ class CartButton extends React.Component {
   };
 
   render() {
+    console.log('carrinho cart');
+    console.log(this.props.carrinho);
     return (
       <TouchableOpacity onPress={this.handleNavigate}>
         <Image
@@ -37,7 +44,7 @@ class CartButton extends React.Component {
               lineHeight: 20
             }}
           >
-            12
+            {this.props.qtd_carrinho}
           </Text>
         </View>
       </TouchableOpacity>
@@ -45,4 +52,10 @@ class CartButton extends React.Component {
   }
 }
 
-export default CartButton;
+
+
+const mapStateToProps = state => ({
+  qtd_carrinho: state.AppReducer.qtd_carrinho
+});
+const mapDispatchToProps = dispatch => bindActionCreators({addToCart}, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(CartButton);

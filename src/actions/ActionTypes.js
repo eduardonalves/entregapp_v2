@@ -31,3 +31,8 @@ export const CATEGORIA_CARREGADA_FALHA = 'categoria_carregada_falha';
 export const CARREGA_PRODUTOS = 'carrega_protutos';
 export const PRODUTO_CARREGADO_OK = 'produto_carregado_ok';
 export const PRODUTO_CARREGADO_FALHA = 'produto_carregado_falha';
+
+//carrinho
+export const ADICIONA_PRODUTO ='adiciona_produto';
+export const REMOVE_PRODUTO = 'remove_produto';
+export const LIMPA_CARRINHO =  'limpa_carrinho';

@@ -1,31 +1,68 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   Button,
-  TouchableOpacity
+  TouchableOpacity, 
+  Alert,
+  Picker
 } from "react-native";
+import { Overlay } from 'react-native-elements';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class ListItem extends React.Component {
+import { addToCart } from '../actions/AppActions';
+
+class ListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isClicked: false
     };
   }
+
+  handleAddToCart = ()=>{
+    const produto = {
+      id: '0',
+      nome: this.props.name,
+      foto:this.props.image,
+      preco_venda: this.props.price,
+      descricao: '',
+      parte_compre_ganhe:'',
+      qtd: 1
+    }
+    
+    this.props.addToCart(produto, this.props.carrinho);
+  }
   handleClick = () => {
     this.setState({
       isClicked: !this.state.isClicked
     });
     this.props.handleNaviagation();
+    Alert.alert(
+      'Adicionar Produto',
+      `Deseja mesmo adicionar o produto ${this.props.name} ao seu pedido?`,
+      [
+        {
+          text: 'Sim',
+          onPress: () => this.handleAddToCart(),
+        },
+        {
+          text: 'Não', 
+          onPress: () => console.log('Não Pressed'),
+          style: 'cancel',
+        },
+      ],
+      {cancelable: false},
+    );
   };
   render() {
     return (
       <TouchableOpacity onPress={this.handleClick}>
         <View
-          //elevation={2}
+          elevation={2}
           style={{
             flex: 1,
             flexDirection: "row",
@@ -74,11 +111,11 @@ export default class ListItem extends React.Component {
               {this.props.cuisine},{" "}
               {this.props.isVegetarian ? (
                 <Text style={{ color: "#4caf50", fontWeight: "bold" }}>
-                  Veg
+                  R$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Text>
               ) : (
                 <Text style={{ color: "#a92319", fontWeight: "bold" }}>
-                  Non-Veg
+                  R$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                 </Text>
               )}
             </Text>
@@ -94,10 +131,11 @@ export default class ListItem extends React.Component {
               style={{
                 flex: 1,
                 flexDirection: "row",
-                justifyContent: "space-between"
+                //justifyContent: "space-between"
                 //width: "100%"
               }}
             >
+              <View style={{flex:1}}>
               <Text
                 style={{
                   fontSize: 21,
@@ -107,7 +145,23 @@ export default class ListItem extends React.Component {
               >
                 {this.props.price}
               </Text>
-              {/* <Button
+              </View>
+              <View style={{flex:1}}>
+              <Picker
+                selectedValue={this.state.language}
+                style={{
+                  height: 30, width: 100
+                }}
+                /*onValueChange={(itemValue, itemIndex) =>
+                  this.setState({language: itemValue})
+                }*/>
+                <Picker.Item label="Java" value="java" />
+                <Picker.Item label="JavaScript" value="js" />
+              </Picker>
+              </View>
+              {
+              
+              /* <Button
                 onPress={e => alert("Hey")}
                 title="ADD"
                 style={{
@@ -120,9 +174,15 @@ export default class ListItem extends React.Component {
                 }}
               /> */}
             </View>
+            
           </View>
         </View>
       </TouchableOpacity>
     );
   }
 }
+const mapStateToProps = state => ({
+  carrinho: state.AppReducer.carrinho
+});
+const mapDispatchToProps = dispatch => bindActionCreators({addToCart}, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem);

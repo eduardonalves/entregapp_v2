@@ -4,7 +4,8 @@ import axios from 'axios'
 import { Actions } from 'react-redux';
 import {
     CATEGORIA_CARREGADA_OK,
-    CATEGORIA_CARREGADA_FALHA
+    CATEGORIA_CARREGADA_FALHA,
+    ADICIONA_PRODUTO
 } from './ActionTypes';
 
 import {
@@ -35,3 +36,15 @@ export const categoriasFetch = () => {
     }
 }
 
+export const addToCart = (produto, carrinho) =>{
+    carrinho.push(produto);  
+    return dispatch => {
+        return dispatch({ type: ADICIONA_PRODUTO, payload: carrinho });
+    }
+}
+
+export const removeFromCart = () => {
+    return dispatch => {
+
+    }
+}
