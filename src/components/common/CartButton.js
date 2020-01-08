@@ -17,8 +17,7 @@ class CartButton extends Component {
   };
 
   render() {
-    console.log('carrinho cart');
-    console.log(this.props.carrinho);
+    
     return (
       <TouchableOpacity onPress={this.handleNavigate}>
         <Image

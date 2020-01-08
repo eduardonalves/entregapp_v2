@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77317eb9-6e4e-47a3-9312-028b4a2755cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/ActionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/AppActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/AppActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dishes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListCart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/CartButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/CartButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/EmptyCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/EmptyCart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/AppReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/AppReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +30,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>

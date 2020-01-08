@@ -13,7 +13,7 @@ import { Overlay } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addToCart } from '../actions/AppActions';
+import { addToCart, updateItemId } from '../actions/AppActions';
 
 class ListItem extends Component {
   constructor(props) {
@@ -25,16 +25,18 @@ class ListItem extends Component {
 
   handleAddToCart = ()=>{
     const produto = {
-      id: '0',
+      id: this.props.id,
       nome: this.props.name,
       foto:this.props.image,
       preco_venda: this.props.price,
       descricao: '',
       parte_compre_ganhe:'',
-      qtd: 1
+      qtd: 1,
+      item_id: this.props.item_id
     }
     
     this.props.addToCart(produto, this.props.carrinho);
+    this.props.updateItemId(this.props.item_id);
   }
   handleClick = () => {
     this.setState({
@@ -66,6 +68,7 @@ class ListItem extends Component {
           style={{
             flex: 1,
             flexDirection: "row",
+            
             backgroundColor: "#ffffff",
             marginHorizontal: 24,
             marginVertical: 8,
@@ -85,19 +88,24 @@ class ListItem extends Component {
               borderTopLeftRadius: 4,
               borderTopRightRadius: 0,
               borderBottomRightRadius: 0,
-              borderBottomLeftRadius: 4
+              borderBottomLeftRadius: 4,
+              flexDirection:"column",
             }}
-            source={{ uri: this.props.image }}
+            //source={{ uri: this.props.image }
+            source={{ uri: this.props.image.replace('http://localhost/','http://10.0.2.2/') }
+          }
           />
           <View
             style={{
-              padding: 16
+              padding: 16,
+              
             }}
           >
             <Text
               style={{
                 fontSize: 18,
-                color: "#333"
+                color: "#333",
+                width:"95%"
               }}
             >
               {this.props.name}
@@ -105,27 +113,24 @@ class ListItem extends Component {
             <Text
               style={{
                 fontSize: 14,
-                color: "#666"
+                color: "#666",
+                width:"100%"
               }}
             >
               {this.props.cuisine},{" "}
-              {this.props.isVegetarian ? (
-                <Text style={{ color: "#4caf50", fontWeight: "bold" }}>
-                  R$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </Text>
-              ) : (
-                <Text style={{ color: "#a92319", fontWeight: "bold" }}>
+              <Text style={{ color: "#a92319", fontWeight: "bold" }}>
                   R$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                </Text>
-              )}
+              </Text>
+
             </Text>
             <Text
               style={{
                 fontSize: 14,
-                color: "#999"
+                color: "#999",
+                
               }}
             >
-              {this.props.label}
+              
             </Text>
             <View
               style={{
@@ -182,7 +187,8 @@ class ListItem extends Component {
   }
 }
 const mapStateToProps = state => ({
-  carrinho: state.AppReducer.carrinho
+  carrinho: state.AppReducer.carrinho,
+  item_id: state.AppReducer.item_id,
 });
-const mapDispatchToProps = dispatch => bindActionCreators({addToCart}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({addToCart, updateItemId}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(ListItem);

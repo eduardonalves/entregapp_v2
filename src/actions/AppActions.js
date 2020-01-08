@@ -5,7 +5,9 @@ import { Actions } from 'react-redux';
 import {
     CATEGORIA_CARREGADA_OK,
     CATEGORIA_CARREGADA_FALHA,
-    ADICIONA_PRODUTO
+    ADICIONA_PRODUTO,
+    ATUALIZA_ITEM_ID,
+    REMOVE_PRODUTO
 } from './ActionTypes';
 
 import {
@@ -43,8 +45,22 @@ export const addToCart = (produto, carrinho) =>{
     }
 }
 
-export const removeFromCart = () => {
+export const updateItemId = (item_id) =>{
+   
     return dispatch => {
+        return dispatch({ type: ATUALIZA_ITEM_ID, payload: item_id + 1 });
+    }
+}
 
+export const removeFromCart = (item_id, carrinho) => {
+    return dispatch => {
+        newItem = [];
+        carrinho.map( (item) =>{
+            
+            if(item.item_id != item_id){
+                newItem.push(item);
+            }
+        });
+        return dispatch({ type: REMOVE_PRODUTO, payload: newItem });
     }
 }

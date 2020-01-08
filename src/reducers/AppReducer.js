@@ -2,10 +2,11 @@ const INITIAL_STATE = {
     adiciona_contato_email: '',
     msgErroCadastroUsuario: '',
     cadastroResultadoUsuario: false,
-    categorias:'',
+    categorias: '',
     mensagem: '',
-    carrinho:[], 
+    carrinho: [],
     qtd_carrinho: 0,
+    item_id: 1
 };
 
 import {
@@ -17,12 +18,13 @@ import {
     CATEGORIA_CARREGADA_OK,
     ADICIONA_PRODUTO,
     REMOVE_PRODUTO,
-    LIMPA_CARRINHO
+    LIMPA_CARRINHO,
+    ATUALIZA_ITEM_ID
 } from '../actions/ActionTypes';
 
 export default (state = INITIAL_STATE, action) => {
     //console.log(action);
-    switch(action.type) {
+    switch (action.type) {
         case MODIFICA_ADICIONA_CONTATO_EMAIL:
             return { ...state, adiciona_contato_email: action.payload };
         case CATEGORIA_CARREGADA_OK:
@@ -32,17 +34,19 @@ export default (state = INITIAL_STATE, action) => {
         case ADICIONA_CONTATO_SUCESSO:
             return { ...state, cadastroResultadoUsuario: action.payload, adiciona_contato_email: '' };
         case MODIFICA_MENSAGEM:
-            return { ...state, mensagem: action.payload };   
+            return { ...state, mensagem: action.payload };
         case ENVIA_MENSAGEM_SUCESSO:
             return { ...state, mensagem: '' };
         case ADICIONA_PRODUTO:
-            
-            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length  };   
+               
+            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };
+        case ATUALIZA_ITEM_ID:
+            return { ...state, item_id: action.payload  };
         case REMOVE_PRODUTO:
-                
-            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };   
+
+            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };
         case LIMPA_CARRINHO:
-            return { ...state, carrinho: '' };   
+            return { ...state, carrinho: '' };
         default:
             return state;
     }

@@ -36,3 +36,4 @@ export const PRODUTO_CARREGADO_FALHA = 'produto_carregado_falha';
 export const ADICIONA_PRODUTO ='adiciona_produto';
 export const REMOVE_PRODUTO = 'remove_produto';
 export const LIMPA_CARRINHO =  'limpa_carrinho';
+export const ATUALIZA_ITEM_ID =  'atualiza_item_id';

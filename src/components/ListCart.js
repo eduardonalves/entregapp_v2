@@ -13,7 +13,7 @@ import { Overlay } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addToCart } from '../actions/AppActions';
+import { removeFromCart } from '../actions/AppActions';
 
 class ListCart extends Component {
   constructor(props) {
@@ -23,16 +23,8 @@ class ListCart extends Component {
     };
   }
 
-  handleAddToCart = () => {
-    let produto = {
-      id: '0',
-      nome: this.props.name,
-      image: this.props.image,
-      price: this.props.price,
-      qtd: 1
-    }
-
-    this.props.addToCart(produto, this.props.carrinho);
+  handleRemoveFromCart = () => {
+    this.props.removeFromCart(this.props.item_id, this.props.carrinho);
   }
   handleClick = () => {
     this.setState({
@@ -40,12 +32,12 @@ class ListCart extends Component {
     });
     //this.props.handleNaviagation();
     Alert.alert(
-      'Adicionar Produto',
-      `Deseja mesmo adicionar o produto ${this.props.name} ao seu pedido?`,
+      'Remover Produto',
+      `Deseja mesmo remover o produto ${this.props.name} do seu pedido?`,
       [
         {
           text: 'Sim',
-          onPress: () => this.handleAddToCart(),
+          onPress: () => this.handleRemoveFromCart(),
         },
         {
           text: 'Não',
@@ -123,7 +115,7 @@ class ListCart extends Component {
                 textAlign: 'center',
               }}
             >
-              Unt {"\n"} {this.props.price}
+              Total {"\n"} {this.props.price}
             </Text>
           </View>
 
@@ -136,5 +128,5 @@ class ListCart extends Component {
 const mapStateToProps = state => ({
   carrinho: state.AppReducer.carrinho
 });
-const mapDispatchToProps = dispatch => bindActionCreators({ addToCart }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ removeFromCart }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(ListCart);

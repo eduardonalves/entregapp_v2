@@ -47,8 +47,7 @@ class Dishes extends Component {
     this.props.navigation.navigate("Dishes");
   };
   render() {
-    console.log('produtos');
-    console.log(this.props.produtos);
+    
 
     return (
       <View style={styles.container}>
@@ -57,6 +56,7 @@ class Dishes extends Component {
           keyExtractor={item => item.Produto.id}
           renderItem={({ item }) => (
             <ListItem
+              id={item.Produto.id}
               name={item.Produto.nome}
               image={item.Produto.foto}
               cuisine={item.Produto.nome}

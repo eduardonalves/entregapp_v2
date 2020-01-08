@@ -19,7 +19,8 @@ import CartButton from "./common/CartButton";
 class Checkout extends Component {
   constructor(props) {
     super(props);
-    //console.log(props);
+   // console.log('this.props.carrinho');
+    //console.log(this.props.carrinho);
     
   }
 
@@ -51,7 +52,7 @@ class Checkout extends Component {
       <View style={styles.container}>
         <FlatList
           data={this.props.carrinho}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.item_id.toString()}
           renderItem={({ item }) => (
             <ListCart
               name={item.nome}
@@ -60,6 +61,7 @@ class Checkout extends Component {
               price={item.preco_venda}
               label={item.descricao}
               isVegetarian={item.parte_compre_ganhe}
+              item_id={item.item_id}
              
             />
           )}
