@@ -4,12 +4,14 @@ import { flipX } from 'react-navigation-transitions'
 import Restaurants from "./components/Restaurants";
 import Dishes from "./components/Dishes";
 import Cart from "./components/Cart";
+import Billing from "./components/Billing";
 
 const MainNavigator = createStackNavigator(
   {
     Restaurants: { screen: Restaurants },
     Dishes: { screen: Dishes },
     Cart: {screen: Cart},
+    Billing: {screen: Billing},
   },
   {
     initialRouteName: "Restaurants",

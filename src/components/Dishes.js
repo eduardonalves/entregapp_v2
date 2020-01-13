@@ -15,19 +15,18 @@ import Constants from "../utils/constants";
 import foodData from "../food-data.json";
 import ListItem from "./ListItem";
 import CartButton from "./common/CartButton";
+import CustomModal from "../components/common/CustomModal";
+
 
 class Dishes extends Component {
   constructor(props) {
     super(props);
-    //console.log(props);
-    
-
     this.props.produtosFetch(this.props.navigation.getParam('categoria_id'));
   }
 
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: "Menu",
+      headerTitle: "Produtos",
       headerStyle: {
         elevation: 0,
         shadowOpacity: 0,
@@ -51,6 +50,7 @@ class Dishes extends Component {
 
     return (
       <View style={styles.container}>
+        <CustomModal />
         <FlatList
           data={this.props.produtos}
           keyExtractor={item => item.Produto.id}
@@ -61,7 +61,7 @@ class Dishes extends Component {
               image={item.Produto.foto}
               cuisine={item.Produto.nome}
               price={item.Produto.preco_venda}
-              label={item.Produto.descricao}
+              description={item.Produto.descricao}
               isVegetarian={item.Produto.parte_compre_ganhe}
               handleNaviagation={this.handleNaviagation}
             />

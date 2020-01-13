@@ -62,6 +62,7 @@ class Checkout extends Component {
               label={item.descricao}
               isVegetarian={item.parte_compre_ganhe}
               item_id={item.item_id}
+              qtd={item.qtd}
              
             />
           )}

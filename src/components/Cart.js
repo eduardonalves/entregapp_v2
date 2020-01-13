@@ -20,12 +20,14 @@ class Cart extends Component {
   constructor(props) {
     super(props);
   }
+
   handleNaviagation = () => {
-    this.props.navigation.navigate("Restaurants");
+    this.props.navigation.navigate("Billing");
   };
+  
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: "Cart",
+      headerTitle: "Pedido",
       headerStyle: {
         elevation: 0,
         shadowOpacity: 0,
@@ -47,7 +49,7 @@ class Cart extends Component {
       return (
         <View>
           <Checkout />
-          <FooterCheckout />
+          <FooterCheckout handleNaviagation={this.handleNaviagation} />
         </View>
       );
     }

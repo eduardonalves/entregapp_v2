@@ -25,7 +25,7 @@ class Restaurants extends Component {
   
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: "Restaurants",
+      headerTitle: "Cardápio",
       headerStyle: {
         elevation: 0,
         shadowOpacity: 0,

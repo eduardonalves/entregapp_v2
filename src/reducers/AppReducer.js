@@ -6,7 +6,17 @@ const INITIAL_STATE = {
     mensagem: '',
     carrinho: [],
     qtd_carrinho: 0,
-    item_id: 1
+    item_id: 1,
+    total_carrinho: 0,
+    qtd: 1,
+    info_modal: 'Sem descrição disponível',
+    show_modal: false,
+    obs_pedido: '',
+    troco_pedido: '',
+    forma_pagamento: '',
+    status_envio_pedido: '',
+    tipos_pagamento: [],
+    tipo_pagamento_falha: '',
 };
 
 import {
@@ -19,7 +29,19 @@ import {
     ADICIONA_PRODUTO,
     REMOVE_PRODUTO,
     LIMPA_CARRINHO,
-    ATUALIZA_ITEM_ID
+    ATUALIZA_ITEM_ID,
+    ATUALIZA_TOTAL_CARRINHO,
+    ATUALIZA_QTD,
+    CARREGA_INFO_MODAL,
+    SHOW_MODAL,
+    ATUALIZA_FORMA_PAGAMENTO,
+    ATUALIZA_OBS,
+    ATUALIZA_TROCO,
+    PEDIDO_NAO_OK,
+    PEDIDO_OK,
+    CARREGA_TIPOS_PAGAMENTO_OK,
+    CARREGA_TIPOS_PAGAMENTO_FALHA
+
 } from '../actions/ActionTypes';
 
 export default (state = INITIAL_STATE, action) => {
@@ -38,15 +60,35 @@ export default (state = INITIAL_STATE, action) => {
         case ENVIA_MENSAGEM_SUCESSO:
             return { ...state, mensagem: '' };
         case ADICIONA_PRODUTO:
-               
+            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };
+        case REMOVE_PRODUTO:
             return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };
         case ATUALIZA_ITEM_ID:
-            return { ...state, item_id: action.payload  };
-        case REMOVE_PRODUTO:
-
-            return { ...state, carrinho: action.payload, qtd_carrinho: action.payload.length };
+            return { ...state, item_id: action.payload };
+        case CARREGA_INFO_MODAL:
+            return { ...state, info_modal: action.payload };
+        case SHOW_MODAL:
+            return { ...state, show_modal: action.payload };
+        case ATUALIZA_TOTAL_CARRINHO:
+            return { ...state, total_carrinho: action.payload.toFixed(2) };
+        case ATUALIZA_QTD:
+            return { ...state, qtd: action.payload };
+        case ATUALIZA_FORMA_PAGAMENTO:
+            return { ...state, forma_pagamento: action.payload };
+        case ATUALIZA_OBS:
+            return { ...state, obs_pedido: action.payload };
+        case ATUALIZA_TROCO:
+            return { ...state, troco_pedido: action.payload };
+        case PEDIDO_OK:
+            return { ...state, status_envio_pedido: true };
+        case PEDIDO_NAO_OK:
+            return { ...state, status_envio_pedido: false };
         case LIMPA_CARRINHO:
             return { ...state, carrinho: '' };
+        case CARREGA_TIPOS_PAGAMENTO_OK:
+            return { ...state, tipos_pagamento: action.payload };
+        case CARREGA_TIPOS_PAGAMENTO_FALHA:
+            return { ...state, tipo_pagamento_falha: action.payload };
         default:
             return state;
     }

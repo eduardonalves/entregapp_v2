@@ -13,7 +13,7 @@ import { Overlay } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { removeFromCart } from '../actions/AppActions';
+import { removeFromCart, updateCart } from '../actions/AppActions';
 
 class ListCart extends Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class ListCart extends Component {
                 textAlign: 'center',
               }}
             >
-              Qtde {"\n"}  1
+              Qtde {"\n"}  {this.props.qtd}
                 </Text>
           </View>
           <View style={{ flex: 1 }}>
@@ -115,7 +115,7 @@ class ListCart extends Component {
                 textAlign: 'center',
               }}
             >
-              Total {"\n"} {this.props.price}
+              Total {"\n"} {this.props.price * this.props.qtd}
             </Text>
           </View>
 
@@ -128,5 +128,5 @@ class ListCart extends Component {
 const mapStateToProps = state => ({
   carrinho: state.AppReducer.carrinho
 });
-const mapDispatchToProps = dispatch => bindActionCreators({ removeFromCart }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ removeFromCart, updateCart }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(ListCart);

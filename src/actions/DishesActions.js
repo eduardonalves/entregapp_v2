@@ -20,7 +20,7 @@ export const produtosFetch = (categoria_id) => {
 
         axios.get(`${APP_URL}/entregapp_sistema/RestProdutos/prodsmobilebycat.json?fp=${FILIAL}&cat=${categoria_id}`)
             .then(res => {
-                console.log(res.data);
+               // console.log(res.data);
                 if (typeof res.data.produtos != 'undefined') {
                     return dispatch({ type: PRODUTO_CARREGADO_OK, payload: res.data.produtos });
                 } else {

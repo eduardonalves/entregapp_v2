@@ -37,3 +37,19 @@ export const ADICIONA_PRODUTO ='adiciona_produto';
 export const REMOVE_PRODUTO = 'remove_produto';
 export const LIMPA_CARRINHO =  'limpa_carrinho';
 export const ATUALIZA_ITEM_ID =  'atualiza_item_id';
+export const ATUALIZA_TOTAL_CARRINHO =  'atualiza_total_carrinho';
+export const ATUALIZA_QTD =  'atualiza_qtd';
+export const ATUALIZA_OBS= 'atualiza_obs';
+export const ATUALIZA_FORMA_PAGAMENTO= 'atualiza_forma_pagamento';
+export const ATUALIZA_TROCO= 'atualiza_troco';
+export const FINALIZA_PEDIDO= 'finaliza_pedido';
+export const PEDIDO_OK = 'pedido_ok';
+export const PEDIDO_NAO_OK = 'pedido_nao_ok';
+
+//tipos de pagamento
+export const CARREGA_TIPOS_PAGAMENTO_OK = 'carrega_tipos_pagamento_ok';
+export const CARREGA_TIPOS_PAGAMENTO_FALHA = 'carrega_tipos_pagamento_falha';
+
+//Modal
+export const SHOW_MODAL =  'show_modal';
+export const CARREGA_INFO_MODAL =  'carrega_info_modal';
