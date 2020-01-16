@@ -16,7 +16,7 @@ const MainNavigator = createStackNavigator(
   {
     initialRouteName: "Restaurants",
     /*Transition config não é obrigatório, caso queira a animação padrão remova a linha abaixo*/
-    transitionConfig: () => flipX(),
+    //transitionConfig: () => flipX(),
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor:'#32a852',

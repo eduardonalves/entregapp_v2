@@ -2,6 +2,8 @@ import _ from 'lodash';
 import axios from 'axios'
 
 import { Actions } from 'react-redux';
+import { Alert } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 
 import {
     CATEGORIA_CARREGADA_OK,
@@ -19,14 +21,21 @@ import {
     PEDIDO_NAO_OK,
     PEDIDO_OK,
     CARREGA_TIPOS_PAGAMENTO_OK,
-    CARREGA_TIPOS_PAGAMENTO_FALHA
+    CARREGA_TIPOS_PAGAMENTO_FALHA,
+    PODE_ENVIAR_PEDIDO,
+    STATUS_ENVIO_PEDIDO,
+    SHOW_LOADER,
+    LIMPA_CARRINHO,
+    LIMPA_QTD_CARRINHO,
+    LIMPA_TOTAL_CARRINHO
 } from './ActionTypes';
 
 import {
     APP_URL,
     FILIAL,
     EMPRESA,
-    SEM_DESCRICAO
+    SEM_DESCRICAO,
+    SALT
 } from '../Settings'
 
 
@@ -165,31 +174,103 @@ export const atualizaFormaDePagamento = (pagamento) => {
 }
 
 export const enviaPedido = (pedido) => {
+    /*console.log('passou aqui');
     return dispatch => {
-        console.log('pedido');
-        console.log(pedido);
-        /*axios.post(`${APP_URL}/entregapp_sistema/RestPedidos/addmobile.json`, pedido)
+        dispatch({ type: PEDIDO_OK, payload: true })
+    }*/
+
+    return dispatch => {
+        dispatch({ type: SHOW_LOADER, payload: true });
+        let meuPedido = montaPedido(pedido);
+        
+        axios.post(`${APP_URL}/entregapp_sistema/RestPedidos/addmobile.json`, meuPedido)
         .then(res => {
-
-            if (typeof res.data.categorias != 'undefined') {
-                return dispatch({ type: CATEGORIA_CARREGADA_OK, payload: res.data.categorias });
-            } else {
-                //  console.log('deu erro');
-                return dispatch({ type: CATEGORIA_CARREGADA_FALHA, payload: false });
-            }
-
-
+            //console.log('passou aqui2 ok');
+            dispatch({ type: SHOW_LOADER, payload: false });
+            
+            
+            dispatch({ type: LIMPA_QTD_CARRINHO, payload: 0 });
+            
+            dispatch({ type: LIMPA_CARRINHO, payload: [] });
+            dispatch({ type: LIMPA_TOTAL_CARRINHO, payload: 0 });
+            dispatch({ type: PEDIDO_OK, payload: true });
+            //dispatch(NavigationActions.navigate({ routeName: 'Restaurants' }));
+            Alert.alert(
+                'Mensagem',
+                `Pedido enviado com sucesso!`,
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => limpaCarrinho(),
+                    style: 'OK',
+                  },
+                ],
+                { cancelable: false },
+              );
+            //dispatch(NavigationActions.navigate({ routeName: 'Restaurants' }));
         }).catch(error => {
-            return dispatch({ type: CATEGORIA_CARREGADA_FALHA, payload: false });
-        });*/
+            //console.log('passou aqui2 nok');
+            dispatch({ type: SHOW_LOADER, payload: false });
+             dispatch({ type: PEDIDO_NAO_OK, payload: false });
+        });
+       
     }
 }
 
+export const showMyLoader = (status) => {
+    return dispatch => {
+        dispatch({ type: SHOW_LOADER, payload: status })
+    }
+}
+
+export const setStatusEnvioPedido = (status) => {
+    
+    return dispatch => {
+        //console.log('STATUS_ENVIO_PEDIDO');
+        //console.log(status);
+        dispatch({ type: STATUS_ENVIO_PEDIDO, payload: status });
+        
+    }
+}
 export const montaPedido = (pedido) => {
     let novoPedido = {
         Pedido:{
-            mesa_id: 1,
-            
-        }
+            filial_id:  FILIAL,
+            a: "entrega",
+            cliente_id: 17,
+            empresa_id: EMPRESA,
+            pagamento_id:1,
+            trocovalor: 0,
+            trocoresposta:"Não",
+            entrega_valor:0,
+            salt: SALT,
+            token:"k1wt0x33kg",
+            obs:"",
+            user_id: 1
+
+        },
+        Itensdepedido:[],
+    }
+    let itensPedido = pedido.carrinho.map((v, k) => {
+       
+        let p_total = v.preco_venda * v.qtd;
+        novoPedido.Itensdepedido.push({
+            produto_id:v.id,
+            qtde: v.qtd,
+            valor_unit: v.preco_venda,
+            valor_total: p_total.toFixed(2),
+            obs_sis:"",
+        });
+    });
+    return novoPedido;
+}
+
+export const limpaCarrinho = () => {
+    
+    return dispatch => {
+        dispatch({ type: LIMPA_CARRINHO, payload: [] });
+        dispatch({ type: LIMPA_QTD_CARRINHO, payload: 0 });
+        dispatch({ type: LIMPA_TOTAL_CARRINHO, payload: 0 });
     }
 }
+

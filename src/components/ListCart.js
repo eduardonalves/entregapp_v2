@@ -126,7 +126,13 @@ class ListCart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  carrinho: state.AppReducer.carrinho
+  carrinho: state.AppReducer.carrinho,
+  total_carrinho: state.AppReducer.total_carrinho,
+  forma_pagamento: state.AppReducer.forma_pagamento,
+  tipos_pagamento: state.AppReducer.tipos_pagamento,
+  troco_pedido: state.AppReducer.troco_pedido,
+  obs_pedido: state.AppReducer.obs_pedido,
+  show_loader: state.AppReducer.show_loader,
 });
 const mapDispatchToProps = dispatch => bindActionCreators({ removeFromCart, updateCart }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(ListCart);

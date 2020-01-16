@@ -81,7 +81,16 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  produtos: state.DishesReducer.produtos
+  produtos: state.DishesReducer.produtos,
+  carrinho: state.AppReducer.carrinho,
+  total_carrinho: state.AppReducer.total_carrinho,
+  qtd_carrinho: state.AppReducer.qtd_carrinho,
+  forma_pagamento: state.AppReducer.forma_pagamento,
+  tipos_pagamento: state.AppReducer.tipos_pagamento,
+  troco_pedido: state.AppReducer.troco_pedido,
+  obs_pedido: state.AppReducer.obs_pedido,
+  show_loader: state.AppReducer.show_loader,
+  status_envio_pedido: state.AppReducer.status_envio_pedido,
 });
 const mapDispatchToProps = dispatch => bindActionCreators({produtosFetch}, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Dishes);

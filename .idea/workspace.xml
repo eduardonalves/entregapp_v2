@@ -3,19 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="77317eb9-6e4e-47a3-9312-028b4a2755cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/ActionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/ActionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/AppActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/AppActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/DishesActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/DishesActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Billing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Billing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dishes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dishes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FooterCheckout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FooterCheckout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ListCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListCart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Restaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Restaurants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RestaurantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RestaurantItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/AppReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/AppReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
     </list>
@@ -29,8 +26,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1665" />
-    <option name="y" value="95" />
+    <option name="x" value="1581" />
+    <option name="y" value="104" />
     <option name="width" value="1380" />
     <option name="height" value="735" />
   </component>
@@ -84,7 +81,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1380" height="735" extended-state="0" />
+    <frame x="1581" y="104" width="1380" height="735" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.46646795" />

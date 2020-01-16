@@ -60,7 +60,14 @@ class Cart extends Component {
 
 
 const mapStateToProps = state => ({
-  qtd_carrinho: state.AppReducer.qtd_carrinho
+  qtd_carrinho: state.AppReducer.qtd_carrinho,
+  carrinho: state.AppReducer.carrinho,
+  total_carrinho: state.AppReducer.total_carrinho,
+  forma_pagamento: state.AppReducer.forma_pagamento,
+  tipos_pagamento: state.AppReducer.tipos_pagamento,
+  troco_pedido: state.AppReducer.troco_pedido,
+  obs_pedido: state.AppReducer.obs_pedido,
+  show_loader: state.AppReducer.show_loader
 });
 const mapDispatchToProps = dispatch => bindActionCreators({ addToCart }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
